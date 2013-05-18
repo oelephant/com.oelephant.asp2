@@ -39,12 +39,13 @@ public class ASPDB extends SQLiteOpenHelper {
 		
 	}
 	
-	public long createProfile(String name, int volRing, int volNotify, int volMedia, int volAlarm, int vibRing, int vibNotify, int isDefault) {
+	public long createProfile(String name, int screen, int volRing, int volNotify, int volMedia, int volAlarm, int vibRing, int vibNotify, int isDefault) {
 		
 		SQLiteDatabase db = this.getReadableDatabase();
 		
 		ContentValues values = new ContentValues();
 		values.put(ASP.Profiles.NAME, name);
+		values.put(ASP.Profiles.SCREEN, screen);
 		values.put(ASP.Profiles.VOL_RING, volRing);
 		values.put(ASP.Profiles.VOL_NOTIFY, volNotify);
 		values.put(ASP.Profiles.VOL_MEDIA, volMedia);
@@ -260,12 +261,13 @@ public class ASPDB extends SQLiteOpenHelper {
 		
 	}
 	
-	public void editProfile(long id, String name, int volRing, int volNotify, int volMedia, int volAlarm, int vibRing, int vibNotify) {
+	public void editProfile(long id, String name, int screen, int volRing, int volNotify, int volMedia, int volAlarm, int vibRing, int vibNotify) {
 		
 		SQLiteDatabase db = this.getWritableDatabase();
 		
 		ContentValues values = new ContentValues();
 		values.put(ASP.Profiles.NAME, name);
+		values.put(ASP.Profiles.SCREEN, screen);
 		values.put(ASP.Profiles.VOL_RING, volRing);
 		values.put(ASP.Profiles.VOL_NOTIFY, volNotify);
 		values.put(ASP.Profiles.VOL_MEDIA, volMedia);
@@ -533,12 +535,13 @@ public class ASPDB extends SQLiteOpenHelper {
 		
 		private long id;
 		private String name;
-		private int volRing, volNotify, volMedia, volAlarm, vibRing, vibNotify, isDefault;
+		private int screen, volRing, volNotify, volMedia, volAlarm, vibRing, vibNotify, isDefault;
 		
 		public Profile(Cursor c) {
 			
 			id = c.getLong(c.getColumnIndex(ASP.Profiles.ID));
 			name = c.getString(c.getColumnIndex(ASP.Profiles.NAME));
+			screen = c.getInt(c.getColumnIndex(ASP.Profiles.SCREEN));
 			volRing = c.getInt(c.getColumnIndex(ASP.Profiles.VOL_RING));
 			volNotify= c.getInt(c.getColumnIndex(ASP.Profiles.VOL_NOTIFY));
 			volMedia = c.getInt(c.getColumnIndex(ASP.Profiles.VOL_MEDIA));
@@ -549,16 +552,17 @@ public class ASPDB extends SQLiteOpenHelper {
 			
 		}
 		
-		public Profile(String name, int volRing, int volNotify, int volMedia, int volAlarm, int vibRing, int vibNotify, int isDefault) {
+		public Profile(String name, int screen, int volRing, int volNotify, int volMedia, int volAlarm, int vibRing, int vibNotify, int isDefault) {
 			
-			this(0, name, volRing, volNotify, volMedia, volAlarm, vibRing, vibNotify, isDefault);
+			this(0, name, screen, volRing, volNotify, volMedia, volAlarm, vibRing, vibNotify, isDefault);
 			
 		}
 		
-		public Profile(long id, String name, int volRing, int volNotify, int volMedia, int volAlarm, int vibRing, int vibNotify, int isDefault) {
+		public Profile(long id, String name, int screen, int volRing, int volNotify, int volMedia, int volAlarm, int vibRing, int vibNotify, int isDefault) {
 			
 			this.id = id;
 			this.name = name;
+			this.screen = screen;
 			this.volRing = volRing;
 			this.volNotify = volNotify;
 			this.volMedia = volMedia;
@@ -579,6 +583,12 @@ public class ASPDB extends SQLiteOpenHelper {
 			
 			return name;
 		
+		}
+		
+		public int getScreen() {
+			
+			return screen;
+			
 		}
 		
 		public int getVol(String which) {

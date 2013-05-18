@@ -11,6 +11,7 @@ public class ASP {
 		public static final String TBL_NAME = "profiles";
 		public static final String TBL_CREATE = "CREATE TABLE profiles ("
 				+ "_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, "
+				+ "screen INTEGER NOT NULL, "
 				+ "vol_ring INTEGER NOT NULL, vol_notify INTEGER NOT NULL, "
 				+ "vol_media INTEGER NOT NULL, vol_alarm INTEGER NOT NULL, "
 				+ "vib_ring INTEGER NOT NULL, vib_notify INTEGER NOT NULL, " 
@@ -19,6 +20,7 @@ public class ASP {
 		
 		public static final String ID = "_id";
 		public static final String NAME = "name";
+		public static final String SCREEN = "screen";
 		public static final String VOL_RING = "vol_ring";
 		public static final String VOL_NOTIFY = "vol_notify";
 		public static final String VOL_MEDIA = "vol_media";
