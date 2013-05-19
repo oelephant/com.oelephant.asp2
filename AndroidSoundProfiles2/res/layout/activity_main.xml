@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <com.example.androidsoundprofiles2.utils.TimeLine
+    <com.oelephant.androidsoundprofiles2.utils.TimeLine
         android:id="@+id/timeLine1"
         android:layout_width="match_parent"
         android:layout_height="159dp" />
