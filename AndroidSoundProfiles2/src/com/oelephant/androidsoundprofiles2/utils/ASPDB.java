@@ -530,6 +530,29 @@ public class ASPDB extends SQLiteOpenHelper {
 		}
 		
 	}
+	
+	public ArrayList<QueueItem> getQueue() {
+		
+		ArrayList<QueueItem> queue = new ArrayList<QueueItem>();
+		
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor c = db.query(ASP.Queue.TBL_NAME, null, null, null, null, null, ASP.Queue.START_UTC + " ASC");
+		
+		if (c.getCount() > 0) {
+			
+			c.moveToFirst();
+			
+			do {
+				
+				queue.add(new QueueItem(c));
+				
+			} while (c.moveToNext());
+			
+		}
+		
+		return queue;
+		
+	}
 
 	public class Profile {
 		
