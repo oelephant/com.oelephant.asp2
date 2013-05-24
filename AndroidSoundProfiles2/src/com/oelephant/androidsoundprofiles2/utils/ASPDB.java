@@ -58,7 +58,7 @@ public class ASPDB extends SQLiteOpenHelper {
 		
 	}
 	
-	public long createSchedule(String name, int color, long pid, int sun, int mon, int tue, int wed, int thu, int fri, int sat, int start, int length) {
+	public long createSchedule(String name, int color, long pid, int sun, int mon, int tue, int wed, int thu, int fri, int sat, long start, long length) {
 		
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor c = db.query(ASP.Schedules.TBL_NAME, null, null, null, null, null, null);
@@ -104,7 +104,7 @@ public class ASPDB extends SQLiteOpenHelper {
 		values.put(ASP.Schedules.START, newSchedule.start);
 		values.put(ASP.Schedules.LENGTH, newSchedule.length);
 		
-		db.insert(ASP.Schedules.TBL_CREATE, null, values);
+		db.insert(ASP.Schedules.TBL_NAME, null, values);
 		
 		return 0;
 		
